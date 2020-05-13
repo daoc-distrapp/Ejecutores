@@ -12,8 +12,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- *
- * @author diego
+ * https://github.com/dordonez-ute-apdist/Ejecutores.git
+ * 
+ * @author dordonez@ute.edu.ec
  */
 public class Main {
 
@@ -25,13 +26,14 @@ public class Main {
         ExecutorCompletionService<Long> ecs = new ExecutorCompletionService<>(pool);
         
         Random rnd = new Random();
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0; i < 500; i++) {
             int n = rnd.nextInt(15);
+            
             ecs.submit(new TaskFactorial(n));
         }
         
         pool.shutdown();
-        
+               
         long total = 0;
         for(int i = 0; i < 50; i++) {       
             try {
